@@ -19,6 +19,7 @@ namespace AuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateToken(LoginDto loginDto)
         {
+            //Üye olduğum bilgilerle token istiyorum.Bana token üretiyor.
             var result=await _authenticationService.CreateTokenAsync(loginDto);
             return ActionResultInstance(result);
         }
@@ -30,17 +31,19 @@ namespace AuthServer.API.Controllers
             return ActionResultInstance(result);
         }
 
+        
         [HttpPost]//string alma genelde güvenlik vs..
         public async Task<IActionResult> RevokeRefreshToken(RefreshTokenDto refreshTokenDto)
         {
-            var result = await _authenticationService.CreateTokenByRefresh(refreshTokenDto.Token);
-            //CreateTokenByRefreshToken yazdı
+            var result = await _authenticationService.RevokeRefreshToken(refreshTokenDto.Token);
+            
             return ActionResultInstance(result);
         }
 
         [HttpPost]
         public async  Task<IActionResult> CreateTokenByRefrehToken(RefreshTokenDto refreshTokenDto)
         {
+            //Elimde refresh token varsa-yani daha önceden token aldıysam- onu parametre olarak veriyorum ve bana token üretiyor.
             //service katmanında AuthenticationService te metot sonuna Token yazmamış olabilirim.
             var result = await _authenticationService.CreateTokenByRefresh(refreshTokenDto.Token);
             return ActionResultInstance(result);

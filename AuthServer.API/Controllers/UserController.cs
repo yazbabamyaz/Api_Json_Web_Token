@@ -20,6 +20,7 @@ namespace AuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
+            //yeni kullanıcı kaydı
             return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));
         }
 
