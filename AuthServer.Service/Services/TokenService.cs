@@ -11,13 +11,13 @@ using SharedLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-//using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
+using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames;
+//using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace AuthServer.Service.Services
 {
@@ -51,8 +51,9 @@ namespace AuthServer.Service.Services
             {
                 //kullanıcıyla alakalı claimler
                 //payload da olacak bilgileri claim olarak ekliyoruz.
-                new Claim(ClaimTypes.NameIdentifier,userApp.Id),
-                new Claim(JwtRegisteredClaimNames.Email ,userApp.Email),
+                new Claim(ClaimTypes.NameIdentifier,userApp.Id),     
+                
+                new Claim(JwtRegisteredClaimNames.Jti ,userApp.Email),
                 //new Claim("email",userApp.Email),//böyle de olur.
                 new Claim(ClaimTypes.Name,userApp.UserName),
                

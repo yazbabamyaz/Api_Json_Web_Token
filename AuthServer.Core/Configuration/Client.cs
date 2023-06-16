@@ -11,6 +11,6 @@ namespace AuthServer.Core.Configuration
     {
         public string Id { get; set; }
         public string Secret { get; set; }
-        public List<string> Audiences { get; set; }//string s si buyuk mü? client makine hangi apiye ulaşacak.
+        public List<String> Audiences { get; set; }//string s si buyuk mü? client makine hangi apiye ulaşacak.
     }
 }
